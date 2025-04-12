@@ -1,4 +1,4 @@
--- BETTER TWEEN --
+--!nonstrict
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 

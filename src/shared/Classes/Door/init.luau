@@ -1,4 +1,5 @@
 --!strict
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local BetterTween = require(ReplicatedStorage.Utility.BetterTween)
