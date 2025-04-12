@@ -5,7 +5,8 @@ local Constants = require(script.Parent.Parent.Constants)
 --- An iterator function that takes local player's backpack and iterates over it's contents, returning cards and their level if player has any
 --- @return tuple: `Tool, number` – Where `Tool` is the clearance card and `number` is it's clearance level
 return function(player: Player): () -> (Tool?, number)
-	local backpackContents: { Instance } = player:WaitForChild("Backpack"):GetChildren()
+	local backpack: Backpack? = player:FindFirstChildOfClass("Backpack")
+	local backpackContents: { Instance } = backpack and backpack:GetChildren() or {}
 
 	local clearanceCards: { Tool } = {}
 	local cardAndLevel: { [Tool]: number } = {}
