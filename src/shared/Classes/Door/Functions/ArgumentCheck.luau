@@ -11,12 +11,12 @@ return function(model: Model)
 	assert(modelPrimaryPart, `'{model.Name}' does not have a primary part`)
 	assert(config, `'{model.Name}' does not have 'Configuration' instance as it's child`)
 
-	local requiredAttributes: { [string]: string } = {
+	local requiredAttributes: { [string]: string } = table.freeze({
 		Open = "boolean",
 		Lockdown = "boolean",
 		Jammed = "boolean",
 		Clearance = "number",
-	}
+	})
 
 	local doorAttributes = config:GetAttributes()
 
@@ -35,12 +35,12 @@ return function(model: Model)
 
 	local partsForTweening = GetPartsForTweening(model)
 
-	local requiredParts: { string } = {
+	local requiredParts: { string } = table.freeze({
 		"DynamicR",
 		"DynamicL",
 		"OpenR",
 		"OpenL",
-	}
+	})
 
 	local missingParts: boolean = false
 
@@ -53,9 +53,9 @@ return function(model: Model)
 
 	assert(not missingParts, `'{model.Name}' is missing required parts for tweening`)
 
-	return {
+	return table.freeze({
 		Model = model,
 		Config = config,
 		Tweening = partsForTweening,
-	}
+	})
 end
