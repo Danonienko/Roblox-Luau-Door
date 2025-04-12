@@ -1,6 +1,6 @@
 --!strict
 
-return {
+return table.freeze({
 	-- Door Attributes
 	--- Defines whether or not the door is currently open
 	OPEN_ATTRIBUTE = "Open",
@@ -31,4 +31,4 @@ return {
 	-- ClearanceController Tags
 	--- A tag that marks a tool as clearance card
 	CLEARANCE_CARD_TAG = "ClearanceCard",
-}
+})
