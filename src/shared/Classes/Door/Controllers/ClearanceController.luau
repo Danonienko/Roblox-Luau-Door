@@ -1,11 +1,13 @@
 --!strict
 
-local DoorTypes = require(script.Parent.Parent.DoorTypes)
-local Constants = require(script.Parent.Parent.Constants)
-local PlayerClearanceCards = require(script.Parent.Parent.Functions.PlayerClearanceCards)
-local PlayerMatchCards = require(script.Parent.Parent.Functions.PlayerMatchCards)
-local DoorClearanceCards = require(script.Parent.Parent.Functions.DoorClearanceCards)
-local FindStringValue = require(script.Parent.Parent.Functions.FindStringValue)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Constants = require(ReplicatedStorage.Classes.Door.Constants)
+local DoorTypes = require(ReplicatedStorage.Classes.Door.DoorTypes)
+local DoorClearanceCards = require(ReplicatedStorage.Classes.Door.Functions.DoorClearanceCards)
+local FindStringValue = require(ReplicatedStorage.Classes.Door.Functions.FindStringValue)
+local PlayerClearanceCards = require(ReplicatedStorage.Classes.Door.Functions.PlayerClearanceCards)
+local PlayerMatchCards = require(ReplicatedStorage.Classes.Door.Functions.PlayerMatchCards)
 
 local Controller = {}
 local ControllerMeta: DoorTypes.IClearanceController = {} :: DoorTypes.IClearanceController

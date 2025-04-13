@@ -1,6 +1,9 @@
 --!strict
 
-local Constants = require(script.Parent.Parent.Constants)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Constants = require(ReplicatedStorage.Classes.Door.Constants)
+
 
 --- An iterator function that takes local player's backpack and iterates over it's contents, returning cards and their level if player has any
 --- @return tuple: `Tool, number` – Where `Tool` is the clearance card and `number` is it's clearance level
