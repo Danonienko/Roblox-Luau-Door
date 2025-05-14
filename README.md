@@ -1,6 +1,7 @@
 # Door Class Documentation
 
 A class for managing door objects in a game with support for clearance levels, cards, lockdown states, and smooth animations.
+I wrote this door system at the request of my friend. It leverages instance attributes for state tracking.
 
 ## Features
 
