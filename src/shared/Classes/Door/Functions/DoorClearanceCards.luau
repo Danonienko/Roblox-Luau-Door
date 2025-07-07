@@ -8,7 +8,7 @@ return function(doorConfig: Configuration): () -> string
 
 	local stringValueInstances: { StringValue } = {}
 
-	for index: number, instance in configContents do
+	for _: number, instance in configContents do
 		if not instance:IsA("StringValue") or instance.Value == nil then
 			continue
 		end

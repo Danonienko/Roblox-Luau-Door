@@ -3,7 +3,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Constants = require(ReplicatedStorage.Classes.Door.Constants)
-local DoorTypes = require(ReplicatedStorage.Classes.Door.DoorTypes)
+local Door_d = require(ReplicatedStorage.Types["Door.d"])
 
 local tagNames: { string } = table.freeze({
 	Constants.DYNAMIC_PART_RIGHT_TAG,
@@ -12,15 +12,15 @@ local tagNames: { string } = table.freeze({
 	Constants.OPEN_PART_LEFT_TAG,
 })
 
-return function(model: Model): DoorTypes.PartsForTweening
-	local partsForTweening = {} :: DoorTypes.PartsForTweening
+return function(model: Model): Door_d.PartsForTweening
+	local partsForTweening = {} :: Door_d.PartsForTweening
 
-	for index: number, child: Instance in model:GetChildren() do
+	for _: number, child: Instance in model:GetChildren() do
 		if not child:IsA("BasePart") then
 			continue
 		end
 
-		for index: number, tagName: string in tagNames do
+		for _: number, tagName: string in tagNames do
 			if child:HasTag(tagName) then
 				partsForTweening[tagName] = child
 				break

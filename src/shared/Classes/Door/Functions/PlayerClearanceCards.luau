@@ -14,7 +14,7 @@ return function(player: Player): () -> (Tool?, number)
 	local clearanceCards: { Tool } = {}
 	local cardAndLevel: { [Tool]: number } = {}
 
-	for index: number, tool: Instance in backpackContents do
+	for _: number, tool: Instance in backpackContents do
 		if not tool:IsA("Tool") or not tool:HasTag(Constants.CLEARANCE_CARD_TAG) then
 			continue
 		end
@@ -22,7 +22,7 @@ return function(player: Player): () -> (Tool?, number)
 		table.insert(clearanceCards, tool)
 	end
 
-	for index: number, clearanceCard: Tool in clearanceCards do
+	for _: number, clearanceCard: Tool in clearanceCards do
 		local clearanceLevel: unknown? = clearanceCard:GetAttribute(Constants.CARD_CLEARANCE_LEVEL_ATTRIBUTE)
 
 		if clearanceLevel == nil or typeof(clearanceLevel) ~= "number" then

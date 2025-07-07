@@ -6,7 +6,7 @@ return table.freeze({
 	OPEN_ATTRIBUTE = "Open",
 	--- Defines whether or not the door is currently locked down, prohibiting it's interaction unless your clearance features lockdown bypass
 	LOCKDOWN_ATTRIBUTE = "Lockdown",
-	--- Defines whether or not the door is currenlt jammed, completely prohibiting it's interaction
+	--- Defines whether or not the door is currently jammed, completely prohibiting it's interaction
 	JAMMED_ATTRIBUTE = "Jammed",
 	--- Defines whether or not the door is currently debouncing, preventing it being spammed
 	DEBOUNCE_ATTRIBUTE = "Debounce",

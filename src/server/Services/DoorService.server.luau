@@ -57,7 +57,7 @@ local function HandleRemoved(door: Instance)
 	return
 end
 
-for index: number, door: Instance in CollectionService:GetTagged(Constants.DOOR_TAG) do
+for _: number, door: Instance in CollectionService:GetTagged(Constants.DOOR_TAG) do
 	HandleAdded(door)
 end
 

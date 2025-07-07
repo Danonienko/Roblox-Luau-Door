@@ -44,7 +44,7 @@ return function(model: Model)
 
 	local missingParts: boolean = false
 
-	for index: number, requiredPart: string in requiredParts do
+	for _: number, requiredPart: string in requiredParts do
 		if partsForTweening[requiredPart] == nil then
 			missingParts = true
 			warn(`'{model.Name}' does not have required part for tweening '{requiredPart}'`)

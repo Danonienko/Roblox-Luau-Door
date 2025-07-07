@@ -7,3 +7,6 @@
 
 # Rojo
 sourcemap.json
+
+# Other
+.vscode

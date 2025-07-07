@@ -5,7 +5,7 @@
 --- @param value string — the string value of the `StringValue` instance we are trying to find
 --- @return A `StringValue` instance with string value you specified if found, `nil` otherwise
 return function(instance: Instance, value: string): StringValue?
-	for index: number, child: Instance in instance:GetChildren() do
+	for _: number, child: Instance in instance:GetChildren() do
 		if not child:IsA("StringValue") then
 			continue
 		end

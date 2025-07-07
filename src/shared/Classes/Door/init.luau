@@ -2,22 +2,22 @@
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
+local Door_d = require(ReplicatedStorage.Types["Door.d"])
 local BetterTween = require(ReplicatedStorage.Utility.BetterTween)
 local ClearanceController = require(script.Controllers.ClearanceController)
 local Constants = require(script.Constants)
-local DoorTypes = require(script.DoorTypes)
 local ArgumentCheck = require(script.Functions.ArgumentCheck)
 
 local Door = {}
-local DoorMeta: DoorTypes.IDoor = {} :: DoorTypes.IDoor
+local DoorMeta: Door_d.IDoor = {} :: Door_d.IDoor
 DoorMeta.__index = DoorMeta
 
 local private = {}
 
-local doorCollection: { [Model]: DoorTypes.Door } = {}
+local doorCollection: { [Model]: Door_d.Door } = {}
 
-function Door.new(model: Model): DoorTypes.Door
-	local self: DoorTypes.Door = setmetatable({}, DoorMeta) :: DoorTypes.Door
+function Door.new(model: Model): Door_d.Door
+	local self: Door_d.Door = setmetatable({}, DoorMeta) :: Door_d.Door
 
 	local package = ArgumentCheck(model)
 
@@ -41,7 +41,7 @@ function Door.new(model: Model): DoorTypes.Door
 	return self
 end
 
-function Door.GetDoor(model: Model): DoorTypes.Door?
+function Door.GetDoor(model: Model): Door_d.Door?
 	return doorCollection[model]
 end
 

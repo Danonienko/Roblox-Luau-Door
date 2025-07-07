@@ -3,18 +3,18 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local Constants = require(ReplicatedStorage.Classes.Door.Constants)
-local DoorTypes = require(ReplicatedStorage.Classes.Door.DoorTypes)
 local DoorClearanceCards = require(ReplicatedStorage.Classes.Door.Functions.DoorClearanceCards)
 local FindStringValue = require(ReplicatedStorage.Classes.Door.Functions.FindStringValue)
 local PlayerClearanceCards = require(ReplicatedStorage.Classes.Door.Functions.PlayerClearanceCards)
 local PlayerMatchCards = require(ReplicatedStorage.Classes.Door.Functions.PlayerMatchCards)
+local Door_d = require(ReplicatedStorage.Types["Door.d"])
 
 local Controller = {}
-local ControllerMeta: DoorTypes.IClearanceController = {} :: DoorTypes.IClearanceController
+local ControllerMeta: Door_d.IClearanceController = {} :: Door_d.IClearanceController
 ControllerMeta.__index = ControllerMeta
 
-function Controller.new(door: DoorTypes.Door): DoorTypes.ClearanceController
-	local self: DoorTypes.ClearanceController = setmetatable({}, ControllerMeta) :: DoorTypes.ClearanceController
+function Controller.new(door: Door_d.Door): Door_d.ClearanceController
+	local self: Door_d.ClearanceController = setmetatable({}, ControllerMeta) :: Door_d.ClearanceController
 
 	self.Door = door
 
@@ -30,7 +30,7 @@ function ControllerMeta:PlayerHasClearance(player: Player): boolean
 		return true
 	end
 
-	if PlayerMatchCards(player, self:GetDoorClearanceCards(), self:GetPlayerClearanceCards(player)) then
+	if PlayerMatchCards(self:GetDoorClearanceCards(), self:GetPlayerClearanceCards(player)) then
 		return true
 	end
 
@@ -38,7 +38,7 @@ function ControllerMeta:PlayerHasClearance(player: Player): boolean
 end
 
 function ControllerMeta:PlayerHasLockdownBypass(player: Player): boolean
-	for card: Tool, level: number in PlayerClearanceCards(player) do
+	for card: Tool, _: number in PlayerClearanceCards(player) do
 		if card:GetAttribute(Constants.LOCKDOWN_BYPASS_ATTRIBUTE) then
 			return true
 		end
@@ -71,7 +71,7 @@ end
 function ControllerMeta:GetPlayerClearanceLevel(player: Player): number
 	local highestLevel: number = 0
 
-	for card: Tool, level: number in PlayerClearanceCards(player) do
+	for _: Tool, level: number in PlayerClearanceCards(player) do
 		highestLevel = level > highestLevel and level or highestLevel
 	end
 
@@ -81,7 +81,7 @@ end
 function ControllerMeta:GetPlayerClearanceCards(player: Player): { Tool }
 	local playerCards: { Tool } = {}
 
-	for card: Tool, level: number in PlayerClearanceCards(player) do
+	for card: Tool, _: number in PlayerClearanceCards(player) do
 		table.insert(playerCards, card)
 	end
 
@@ -110,7 +110,7 @@ function ControllerMeta:AddDoorClearanceCard(cardName: string): ()
 end
 
 function ControllerMeta:AddDoorClearanceCards(cardNames: { string }): ()
-	for index: number, cardName: string in cardNames do
+	for _: number, cardName: string in cardNames do
 		self:AddDoorClearanceCard(cardName)
 	end
 end
@@ -130,7 +130,7 @@ function ControllerMeta:RemoveDoorClearanceCard(cardName: string): ()
 end
 
 function ControllerMeta:RemoveDoorClearanceCards(cardNames: { string }): ()
-	for index: number, cardName: string in cardNames do
+	for _: number, cardName: string in cardNames do
 		self:RemoveDoorClearanceCard(cardName)
 	end
 end
